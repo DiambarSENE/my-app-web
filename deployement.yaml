@@ -1,0 +1,36 @@
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: frontend_jcaisse_2
+# spec:
+#   selector:
+#     app: frontend_jcaisse
+#   ports:
+#     - protocol: TCP
+#       port: 80
+#       targetPort: 80
+#   # Ajoutez cette section pour spécifier les dépendances vers le microservice "user-service"
+#   externalTrafficPolicy: Local
+#   sessionAffinity: None    
+
+# ---
+
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: frontend_jcaisse_2
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: frontend_jcaisse
+#   template:
+#     metadata:
+#       labels:
+#         app: frontend_jcaisse
+#     spec:
+#       containers:
+#         - name: frontend_jcaisse
+#           image: jcaisse-frontend-v2:tag
+#           ports:
+#             - containerPort: 80
