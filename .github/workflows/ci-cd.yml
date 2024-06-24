@@ -46,7 +46,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: diambarsene/jcaisse-frontend-app-react:latest . 
+          tags: diambarsene/jcaisse-frontend-app-react:latest
 
   merge-dev-to-main:
     #needs: build
