@@ -1,49 +1,144 @@
 version: '3.8'
-
 services:
-  frontend:
-    container_name: app-prod-conteneur
-    image: diambarsene/jcaisse-frontend-app-react:latest # Remplacez par le nom et la version de votre image
+  registry-service:
+    image: diambarsene/yaatout.registry.v01 
+    container_name: registry-service
     restart: always
     ports:
-      - "8081:80" # Utilisez le port que vous souhaitez exposer
+      - '8761:8761'
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8761/actuator/health" ]
+      interval: 1m
+      timeout: 10s
+      retries: 4
+
+  yaatout.config.api:
+    image: diambarsene/yaatout.config.api:v01  
+    container_name: yaatout.config
+    restart: always
+    ports:
+      - '8888:8888'
     environment:
-      REACT_APP_API_URL_PARAMETRE: http://app-parametres-api:8084 # Remplacez par l'URL de votre API backend
-      REACT_APP_API_URL_UTILISATEUR: http://app-users-api:8083
+      - DISCOVERY_SERVICE_URL=http://registry-service:8761/eureka
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8888/actuator/health" ]
+      interval: 2m
+      timeout: 10s
+      retries: 5
     depends_on:
-      - app-parametres-api
-      - app-users-api
+      registry-service:
+        condition: service_healthy  
+
+  app-parametres-api:
+    container_name: parametres-api
+    image: diambarsene/yaatout-parametre-api:v01
+    restart: always
+    ports:
+      - "8084:8084"
+    environment:
+      - DISCOVERY_SERVICE_URL=http://registry-service:8761/eureka
+      - CONFIG_SERVICE_URL=http://yaatout.config.api:8888
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8084/actuator/health" ]
+      interval: 2m
+      timeout: 10s
+      retries: 8
+    depends_on:
+      db_parametres_api:
+        condition: service_healthy
+      yaatout.config.api:
+        condition: service_healthy 
+
+  db_parametres_api:
+    container_name: db_parametres_api
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: sene
+      MYSQL_DATABASE: Jcaisse_paramettre
+      MYSQL_USER: sene #utilisateur_db_user
+      MYSQL_PASSWORD: sene #utilisateur_db_password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 2m
+      timeout: 10s
+      retries: 5  
+    ports:
+      - "3307:3306"
+    volumes:
+      - parametres-db-data:/var/lib/mysql
+  
+  app-users-api:
+    container_name: app_users_api
+    image: diambarsene/jcaisse-users-api-v2:latest #nom-image-utilisateur:version
+    restart: always
+    ports:
+      - "8083:8083"
+    environment:
+      - DISCOVERY_SERVICE_URL=http://registry-service:8761/eureka
+      - CONFIG_SERVICE_URL=http://yaatout.config.api:8888
+    depends_on:
+      - db_users_api
+
+  db_users_api:
+    container_name: db_user_api
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: sene
+      MYSQL_DATABASE: Jcaisse_utilisateurs
+      MYSQL_USER: sene
+      MYSQL_PASSWORD: sene
+    ports:
+      - "3308:3306"
+    volumes:
+      - users-db-data:/var/lib/mysql
+
+  yaatout.proxy.api:
+    image: diambarsene/yaatout.proxy.api:v01     
+    container_name: yaatout.proxy.api
+    restart: always
+    ports:
+      - "9999:9999"
+    environment:
+      - DISCOVERY_SERVICE_URL=http://registry-service:8761/eureka
+      - CONFIG_SERVICE_URL=http://yaatout.config.api:8888
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:9999/actuator/health" ]
+      interval: 2m
+      timeout: 10s
+      retries: 8
+    depends_on:
+      yaatout.config.api:
+        condition: service_healthy
+
+  frontend:
+    container_name: yaatout-frontend
+    image: diambarsene/jcaisse-frontend-app-react:latest
+    restart: always
+    ports:
+      - '8081:80'
+    depends_on:
+      yaatout.proxy.api:
+        condition: service_healthy               
+
+volumes:
+  parametres-db-data:
+  users-db-data:
 
 
 
 
-#volumes:
-  #parametres-db-data:
-  #users-db-data:
-
-
-
-# #profil dev
-# version: "3.8"
+# version: '3.8'
 
 # services:
-#   app:
-#     container_name: app-dev
-#     image: app-dev
-#     build:
-#       target: development
-#     volumes:
-#       - ./src:/app/src
+#   frontend:
+#     container_name: app-prod-conteneur
+#     image: diambarsene/jcaisse-frontend-app-react:latest # Remplacez par le nom et la version de votre image
+#     restart: always
 #     ports:
-#       - 3000:3000
-
-
-# #profil prod
-# version: "3.8"
-
-# services:
-#   app:
-#     container_name: app-prod
-#     image: app-prod
-#     build:
-#       target: production
+#       - "8081:80" # Utilisez le port que vous souhaitez exposer
+#     environment:
+#       REACT_APP_API_URL_PARAMETRE: http://app-parametres-api:8084 # Remplacez par l'URL de votre API backend
+#       REACT_APP_API_URL_UTILISATEUR: http://app-users-api:8083
+#     depends_on:
+#       - app-parametres-api
+#       - app-users-api

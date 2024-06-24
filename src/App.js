@@ -148,7 +148,7 @@ function App() {
                 <BrowserRouter> 
                    
                     <Routes>
-                        <Route path="/" exact element={ < Connexion /> }></Route>
+                        {/* <Route path="/" exact element={ < Connexion /> }></Route> */}
                         <Route path="/home"   element={ < Home  /> } ></Route>
                         <Route path="/listType" element={ < ListType /> } ></Route>
                         <Route path="/addParametre" element={ < AddParametre /> }></Route>

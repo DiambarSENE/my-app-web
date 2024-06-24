@@ -1,92 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    
-    <meta property="og:image" content="https://fillow.dexignlab.com/xhtml/social-image.png">
-    
-    
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-
-    
-    <!-- FAVICONS ICON -->
-    <link rel="shortcut icon" type="image/png" href="%PUBLIC_URL%/images/favicon.png">
-    <link rel="shortcut icon" type="image/png" href="%PUBLIC_URL%/images/jcaisse.png">
-    <link href="/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
-    <link rel="stylesheet" href="/vendor/nouislider/nouislider.min.css">
-    
-    <!-- Datatable  -->
-    <link href="/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet" />
-    
-    <!-- Form step -->
-    <link href="/vendor/jquery-smartwizard/dist/css/smart_wizard.min.css" rel="stylesheet">
-    
-    <link href="/vendor/lightgallery/css/lightgallery.min.css" rel="stylesheet">
-
-
-    <!-- Custom Stylesheet -->
-	  <link href="/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
-    <link href="/css/style.css" rel="stylesheet">
-
-    <!-- PAGE TITLE HERE -->
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<meta name="robots" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Fillow : Fillow Saas Admin  Bootstrap 5 Template">
+	<meta property="og:title" content="Fillow : Fillow Saas Admin  Bootstrap 5 Template">
+	<meta property="og:description" content="Fillow : Fillow Saas Admin  Bootstrap 5 Template">
+	<meta property="og:image" content="https:/fillow.dexignlab.com/xhtml/social-image.png">
+	<meta name="format-detection" content="telephone=no">
+	
+	<!-- PAGE TITLE HERE -->
 	<title>Admin Jcaisse²</title> 
+	
+	<!-- FAVICONS ICON -->
+	<link rel="shortcut icon" type="image/png" href="images/favicon.png">
+	<link href="%PUBLIC_URL%/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
+	<link href="%PUBLIC_URL%/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
+	<link rel="stylesheet" href="%PUBLIC_URL%/vendor/nouislider/nouislider.min.css">
+	
+	<!-- Style css -->
+    <link href="%PUBLIC_URL%/css/style.css" rel="stylesheet">
+	<base href="http://localhost:3000/">
+	
+
   </head>
   <body>
-     <!--*******************
-        Preloader start
-    ********************-->
-    <div id="preloader">
-      <div className="lds-ripple">
-        <div></div>
-        <div></div>
-      </div>
-      </div>
-      <!--*******************
-          Preloader end
-      ********************-->
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="main-wrapper">
       <div id="root">      
       </div>
-    </div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-
- <!-- Required vendors -->
+<!-- 
  <script src="/vendor/global/global.min.js"></script>
  <script src="/vendor/chart.js/Chart.bundle.min.js"></script>
-
- 
- <!-- Apex Chart -->
  <script src="/vendor/apexchart/apexchart.js"></script>
- 
- <!-- Chart piety plugin files -->
    <script src="/vendor/peity/jquery.peity.min.js"></script>
- <!-- Dashboard 1 -->
  <script src="/js/dashboard/dashboard-1.js"></script>
  
  <script src="/vendor/owl-carousel/owl.carousel.js"></script>
-
- 
-
   <script src="/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
-
  
    <script src="/js/custom.min.js"></script>
   <script src="/js/dlabnav-init.js"></script>
@@ -139,14 +94,79 @@
    });
    
  </script>
-
-  
-
-
-  <!-- Required vendors -->
 	<script src="/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-	<script src="/vendor/lightgallery/js/lightgallery-all.min.js"></script>
+	<script src="/vendor/lightgallery/js/lightgallery-all.min.js"></script> -->
 
- 
+  <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+    <script src="%PUBLIC_URL%/vendor/global/global.min.js"></script>
+	<script src="%PUBLIC_URL%/vendor/chart.js/Chart.bundle.min.js"></script>
+	<script src="%PUBLIC_URL%/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+	
+	<!-- Apex Chart -->
+	<script src="%PUBLIC_URL%/vendor/apexchart/apexchart.js"></script>
+	
+	<script src="%PUBLIC_URL%/vendor/chart.js/Chart.bundle.min.js"></script>
+	
+	<!-- Chart piety plugin files -->
+    <script src="%PUBLIC_URL%/vendor/peity/jquery.peity.min.js"></script>
+	<!-- Dashboard 1 -->
+	<script src="%PUBLIC_URL%/js/dashboard/dashboard-1.js"></script>
+	
+	<script src="%PUBLIC_URL%/vendor/owl-carousel/owl.carousel.js"></script>
+	
+    <script src="%PUBLIC_URL%/js/custom.min.js"></script>
+	<script src="%PUBLIC_URL%/js/dlabnav-init.js"></script>
+	<script src="%PUBLIC_URL%/js/demo.js"></script>
+    <script src="%PUBLIC_URL%/js/styleSwitcher.js"></script>
+	<script>
+		function cardsCenter()
+		{
+			
+			/*  testimonial one function by = owl.carousel.js */
+			
+	
+			
+			jQuery('.card-slider').owlCarousel({
+				loop:true,
+				margin:0,
+				nav:true,
+				//center:true,
+				slideSpeed: 3000,
+				paginationSpeed: 3000,
+				dots: true,
+				navText: ['<i class="fas fa-arrow-left"></i>', '<i class="fas fa-arrow-right"></i>'],
+				responsive:{
+					0:{
+						items:1
+					},
+					576:{
+						items:1
+					},	
+					800:{
+						items:1
+					},			
+					991:{
+						items:1
+					},
+					1200:{
+						items:1
+					},
+					1600:{
+						items:1
+					}
+				}
+			})
+		}
+		
+		jQuery(window).on('load',function(){
+			setTimeout(function(){
+				cardsCenter();
+			}, 1000); 
+		});
+		
+	</script>
   </body>
 </html>

@@ -9,6 +9,7 @@ import EditerRole from "./editerRole";
 import DeleteRole from "./deleteRole";
 import AddRole from "./addRole";
 import Connexion from "../utilisateurs/connexion";
+import Preload from "../templates/preload";
 
 function ListRole(){
    //j'utilise le token pour la redirection entre le page d'accueil et la page de connexion
@@ -69,12 +70,14 @@ function ListRole(){
     ];
     return(
         <>
-        {
+         <Preload/>
+         <div id="main-wrapper">
+        {/* {
           !stateToken || stateToken === "null" ? ( 
             < Connexion />
           ) :
           (
-            <>
+            <> */}
             <Header />
             <SideNav />
            
@@ -130,9 +133,10 @@ function ListRole(){
               </div>
             </div>
             <Footer/>
-            </>
+            {/* </>
           )
-        }
+        } */}
+        </div>
         </>
     )
 }

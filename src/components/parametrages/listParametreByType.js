@@ -7,12 +7,13 @@ import AddParametre from './addParametre';
 import EditParametre from './editParametre';
 import DataTable from 'react-data-table-component';
 import DeleteParametre from './deleteParametre';
-import Header from '../templates/header';
-import Footer from '../templates/Footer';
-import SideNav from '../templates/SideNav';
 import { AppContext, AppContextParamByType } from '../../useContext/context';
 import Connexion from '../utilisateurs/connexion';
 import { AppContextToken } from '../../useContext/contextStateUser';
+import Preload from '../templates/preload';
+import Header from '../templates/header';
+import SideNav from '../templates/SideNav';
+import Footer from '../templates/Footer';
 
 
 function ListParametreByType(){
@@ -143,14 +144,16 @@ function ListParametreByType(){
 
     return(
         <>
-          {
+          <Preload/>
+          <div id="main-wrapper">
+          {/* {
              !stateToken || stateToken === "null" ? (
               <Connexion />
              
               ) :
                (
-                <>
-                  <Header />
+                <> */}
+                  <Header/>
                   <SideNav/>
                   <div className="content-body">
                     <div className="container-fluid">
@@ -212,10 +215,11 @@ function ListParametreByType(){
             
                     </div>
                   </div> 
-                  <Footer /> 
-                </> 
+                  <Footer/> 
+                {/* </> 
                )
-          }     
+          }      */}
+          </div>
         </>
         
         );

@@ -11,12 +11,13 @@ function Home() {
 
   return (
     <>
-    {
+     <div id="main-wrapper">
+    {/* {
         !stateToken || stateToken === "null" ? (
               < Connexion />
         ) :
         (
-          <>
+          <> */}
           <Header />
           <SideNav /> 
           <div className="content-body">
@@ -671,9 +672,10 @@ function Home() {
             </div>
           </div>
           <Footer/>
-          </>
+          {/* </>
         )
-   }
+   } */}
+   </div>
     </>
   )
 }

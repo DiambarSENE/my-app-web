@@ -13,6 +13,7 @@ import { AppContextRole, AppContextToken, AppContextUtilisateur } from "../../us
 import AddUser from "./addUser.js";
 import { updatePropertyiSActivated } from "../../servicesApi/microservice-parametre";
 import Connexion from "./connexion";
+import Preload from "../templates/preload.js";
 
 function ListUser(){
    //j'utilise le token pour la redirection entre le page d'accueil et la page de connexion
@@ -117,14 +118,16 @@ function ListUser(){
     ];
     return(
         <>
-          {
+         <Preload/>
+         <div id="main-wrapper">
+          {/* {
              !stateToken || stateToken === "null" ? ( 
               <Connexion/>
               ) :
               (
-              <>
+              <>*/}
                 <Header />
-                <SideNav />
+                <SideNav /> 
               
                 <div className="content-body">
                     <br/>
@@ -213,9 +216,10 @@ function ListUser(){
                     </div>
                 </div>
                 <Footer/>
-              </>
+              {/* </>
               )
-          }
+          } */}
+          </div>
         </>
     )
 }

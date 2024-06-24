@@ -6,23 +6,23 @@ export const getAuthToken = () => {
 };
 
 export const parametresApi = axios.create({
-    baseURL: "http://localhost:8084",
-    //baseURL: "http://31.220.20.148:8084",
-    headers: {
-        //'Authorization': `Bearer ${getAuthToken()}`,
-        'Content-Type': 'application/json',
-    },
+    //baseURL: "http://localhost:8084",
+    baseURL: "http://31.220.20.148:9999/YAATOUT-PARAMETTRES-API",
+    // headers: {
+    //     'Authorization': `Bearer ${getAuthToken()}`,
+    //     'Content-Type': 'application/json',
+    // },
 });
 
 
-parametresApi.interceptors.request.use(config => {
-    const token = getAuthToken();
-    if(token !== "null"){
-        config.headers.Authorization = `Bearer ${token}`;
-    }
+// parametresApi.interceptors.request.use(config => {
+//     const token = getAuthToken();
+//     if(token !== "null"){
+//         config.headers.Authorization = `Bearer ${token}`;
+//     }
 
-    return config;
-});
+//     return config;
+// });
 // ==============================
 // export const getTypes = async () => {
 //     try {

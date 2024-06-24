@@ -30,37 +30,37 @@ function SideNav() {
       <div className="dlabnav">
         <div className="dlabnav-scroll">
           <ul className="metismenu" id="menu">
-            <li><Link to='/home' aria-expanded="false">
+            <li><a href='/home' aria-expanded="false">
                 <i className="fas fa-home" />
                 <span className="nav-text">Accueil</span>
-              </Link>
+              </a>
             </li>
-            <li><a className="has-arrow " href="javascript:void()" aria-expanded="false">
+            <li><a className="has-arrow " aria-expanded="false">
                 <i className="fas fa-clone" />
                 <span className="nav-text">Types</span>
               </a>
               <ul aria-expanded="false">
-                  <li><Link to={"/listType"}>Gestion des types</Link></li>
+                  <li><a href="/listType">Gestion des types</a></li>
               </ul>
             </li>
-            <li><a className="has-arrow " href="javascript:void()" aria-expanded="false">
+            <li><a className="has-arrow " aria-expanded="false">
                 <i className="fa fa-bars" />
                 <span className="nav-text">Parametrages</span>
               </a>
               <ul aria-expanded="false">
                   { stateT.map(type => 
                       <li key={type.typeId} >
-                        <Link  to={`/listParametreByType/${type.typeId}`} >{type.name}</Link>  
+                        <a  href={`/listParametreByType/${type.typeId}`} >{type.name}</a>  
                       </li>
                   )}
               </ul>
             </li>
-            <li><a className="has-arrow " href="javascript:void()" aria-expanded="false">
+            <li><a className="has-arrow " aria-expanded="false">
                 <i className="fas fa-heart" />
                 <span className="nav-text">Fonctionnalité</span>
               </a>
               <ul aria-expanded="false">
-                 <li><Link to={"/listFonctionnalite"}>Gestion des fonctionnalités</Link></li>
+                 <li><a href="/listFonctionnalite">Gestion des fonctionnalités</a></li>
                 {/* <li><a href="uc-select2.html">Select 2</a></li>
                 <li><a href="uc-nestable.html">Nestedable</a></li>
                 <li><a href="uc-noui-slider.html">Noui Slider</a></li>
@@ -96,7 +96,7 @@ function SideNav() {
                 <li><a href="table-datatable-basic.html">Datatable</a></li>
               </ul>
             </li> */}
-            <li><a className="has-arrow " href="javascript:void()" aria-expanded="false">
+            <li><a className="has-arrow " aria-expanded="false">
                 <i className="fas fa-user" />
                 <span className="nav-text">Roles</span>
               </a>
@@ -104,7 +104,7 @@ function SideNav() {
                 <li><Link to={"/listRole"}>Gestion des roles</Link></li>
               </ul>
             </li>
-            <li><a className="has-arrow " href="javascript:void()" aria-expanded="false">
+            <li><a className="has-arrow " aria-expanded="false">
                 <i className="fas fa-user-check" />
                 <span className="nav-text">Mon Compte</span>
               </a>

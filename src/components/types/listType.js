@@ -13,6 +13,7 @@ import SideNav from '../templates/SideNav';
 import { AppContext } from '../../useContext/context';
 import Connexion from '../utilisateurs/connexion';
 import { AppContextToken } from '../../useContext/contextStateUser';
+import Preload from '../templates/preload';
 
 function ListType(){
     const navigate = useNavigate();
@@ -116,13 +117,15 @@ function ListType(){
     //  };
    return(
     <>
-      {
+     <Preload/>
+     <div id="main-wrapper">
+      {/* {
          !stateToken || stateToken === "null" ? ( 
           < Connexion />
        
           ) :
           (
-            <>
+            <> */}
                 <Header/>
                 <SideNav />
                 <div className="content-body">
@@ -182,9 +185,10 @@ function ListType(){
                   </div>
                 </div> 
                 <Footer /> 
-            </>
+            {/* </>
           )
-      }     
+      }      */}
+      </div>
     </>
 
     );

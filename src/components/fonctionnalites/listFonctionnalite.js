@@ -13,6 +13,7 @@ import EditFonctionnalite from './editFonctionnalite';
 import DeleteFonctionnalite from './deleteFonctionnalite';
 import AddFonctionnalite from './addFonctionnalite';
 import { activerDesactiver, getAllFonctionnalites, updatePropertyActiver } from '../../servicesApi/microservice-parametre';
+import Preload from '../templates/preload';
 
 function ListFonctionnalite(){
 
@@ -106,13 +107,15 @@ function ListFonctionnalite(){
 
    return(
     <>
-      {
+    <Preload/>
+     <div id="main-wrapper">
+      {/* {
          !stateToken || stateToken === "null" ? ( 
           < Connexion />
        
           ) :
           (
-            <>
+            <> */}
                 <Header/>
                 <SideNav />
                 <div className="content-body">
@@ -172,9 +175,10 @@ function ListFonctionnalite(){
                   </div>
                 </div> 
                 <Footer /> 
-            </>
+            {/* </>
           )
-      }     
+      }      */}
+      </div>
     </>
 
     );
