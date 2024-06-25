@@ -87,7 +87,7 @@ jobs:
       - name: Transférer docker-compose sur le VPS
         uses: appleboy/scp-action@master
         with:
-          host: ${{ secrets.SSH_HOST_NAME }}
+          host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
