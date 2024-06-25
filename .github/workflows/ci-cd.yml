@@ -91,7 +91,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          source: "./docker-compose-front.yml"
+          source: "./docker-compose-frontend.yml"
           target: "/docker-compose-files"     
 
       - name: Déployer l'application sur le VPS
