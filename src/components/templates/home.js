@@ -2,12 +2,13 @@ import React, { useContext } from 'react';
 import Header from './header';
 import SideNav from './SideNav';
 import Footer from './Footer';
-import Connexion from '../utilisateurs/connexion';
-import { AppContextToken } from '../../useContext/contextStateUser';
+import Connexion from '../api-utilisateur/utilisateurs/connexion';
+import { AppContextToken, useAuth } from '../../useContext/contextStateUser';
 
 function Home() {
   //j'utilise le token pour la redirection entre le page d'accueil et la page de connexion
-  const {stateToken , setStateToken} = useContext(AppContextToken);
+  //const {stateToken , setStateToken} = useContext(AppContextToken);
+  const {stateToken} = useAuth(); // ✅ Récupère correctement le token depuis le contexte
 
   return (
     <>

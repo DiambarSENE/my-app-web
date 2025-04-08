@@ -70,7 +70,7 @@ services:
   app-users-api:
     container_name: app_users_api
     image: diambarsene/jcaisse-users-api-v2:latest #nom-image-utilisateur:version
-    restart: always
+    restart: always 
     ports:
       - "8083:8083"
     environment:

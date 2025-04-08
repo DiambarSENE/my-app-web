@@ -1,0 +1,93 @@
+// import React, { useContext, useEffect, useState } from "react";
+// import { Link } from "react-router-dom";
+// import Modal from 'react-bootstrap/Modal';
+// import { ValidationName } from "../../../validateur/validation";
+// import { createEntreprise, getAllEntreprises } from "../../../servicesApi/microservice-utilisateur";
+// import { AppContextIdUserByToken, AppContextEntreprise } from "../../../useContext/contextStateUser";
+
+// function AddEntreprise(){
+//     const {stateIdUserFromToken , setStateIdUserFromToken} = useContext(AppContextIdUserByToken);
+//     const {stateEntreprise, setStateEntreprise} = useContext(AppContextEntreprise);
+
+//       const [show, setShow] = useState(false);
+//       const handleClose = () => setShow(false);
+//       const handleShow = () => setShow(true);
+      
+     
+//       const [nom, setNom] = useState("");
+//       const [description, setDescription] = useState("");
+//       //const idUser = stateIdUserFromToken;
+//       //const [userId, setUserId] = useState(idUser);
+//       const [errorNom, setErrorNom] = useState("");
+     
+//       const handlerAddEntreprise = (e) => {
+//         const userId = stateIdUserFromToken;
+//         e.preventDefault();
+//         const errorNom = ValidationName(nom);
+//         let entreprise = {nom, description, userId}
+//         if(!errorNom){
+//             createEntreprise(entreprise).then(resp => {
+//                  //alert("Entreprise cree avec success");
+//                  setNom("");
+//                  setDescription("");
+//                  //setUserId("");
+//                  handleClose();
+
+//                  getAllEntreprises().then(resp => {
+//                     const currentUserEntreprises = stateEntreprise;
+//                     const updatedUserEntreprises = [resp.data[resp.data.length - 1], ...currentUserEntreprises];
+//                     setStateEntreprise(updatedUserEntreprises);
+//                  }).catch(err => {
+//                     console.error(err);
+//                  })
+//             })
+//         }else{
+//             setErrorNom(errorNom);
+//         }
+//       }
+
+//     return(
+//         <>
+//           <Link onClick={handleShow} className="btn btn-primary btn-rounded fs-18" >+Ajouter un entreprise</Link>
+
+//         <Modal show={show} onHide={handleClose}>
+//         <Modal.Header closeButton>
+//             <Modal.Title>Ajouter une entreprise</Modal.Title>
+//         </Modal.Header>
+//         <Modal.Body>
+//           <form onSubmit={ handlerAddEntreprise }>
+//             <div className="row"> 
+//                 <div className="col-lg-12">
+//                 <div className="mb-3">
+//                     <label className="form-label">Nom <span style={{color: "red"}}>*</span>:
+//                     {errorNom && <span style={ { color: "red"} } >{errorNom}</span>}
+//                     </label>
+//                     <input name="nom" type="text" value={nom}
+//                       onChange={(e) => setNom(e.target.value) } className="form-control" />
+//                 </div>
+//                 </div>
+//                 <div className="col-lg-12">
+//                 <div className="mb-3">
+//                     <label className="form-label">Description : </label>
+//                     <input name="description" type="tel" value={description}
+//                         onChange={(e) => setDescription(e.target.value) } className="form-control" />
+//                 </div>
+//                 </div>
+                
+//               <div className="modal-footer">
+                  
+//                   <button type="button" className="btn btn-danger light" onClick={handleClose}>Fermer</button>
+//                   <button className="btn btn-primary">+ Ajouter</button>
+                  
+//               </div>
+//             </div>
+//           </form>
+//         </Modal.Body>
+//         <Modal.Footer>
+//         </Modal.Footer>
+//         </Modal>
+//         </>
+//     );
+// }
+
+// export default AddEntreprise;

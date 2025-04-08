@@ -1,19 +1,21 @@
 import React, { useContext } from 'react'
-import {  deleteToken } from '../../servicesApi/microservice-utilisateur';
+import {  deleteToken,deleteEmailInLocalStorage } from '../../servicesApi/microservice-utilisateur';
 import { Link, useNavigate } from 'react-router-dom';
-import { AppContextToken, AppContextUserByEmail } from '../../useContext/contextStateUser';
+import { AppContextToken, AppContextUserByEmail, useAuth } from '../../useContext/contextStateUser';
    
   function Header() {
     const navigate = useNavigate();
     //permet d'utiliser l'email de l'utilisateur connecter 
     const {stateUserByEmail, setStateUserByEmail} = useContext(AppContextUserByEmail);
      //j'utilise le token pour la redirection entre le page d'accueil et la page de connexion
-     const {stateToken , setStateToken} = useContext(AppContextToken);
+    // const {stateToken , setStateToken} = useContext(AppContextToken);
+     const {stateToken, setStateToken} = useAuth(); // ✅ Récupère correctement le token depuis le contexte
     
     const deconnexion = () => {
         setStateUserByEmail(null);
         deleteToken();
         setStateToken(null);
+        deleteEmailInLocalStorage();
         navigate("/");
     };
 
@@ -743,15 +745,15 @@ import { AppContextToken, AppContextUserByEmail } from '../../useContext/context
                         <svg xmlns="http://www.w3.org/2000/svg" className="text-primary" width={18} height={18} viewBox="0 0 512 512"><path d="M345 39.1L472.8 168.4c52.4 53 52.4 138.2 0 191.2L360.8 472.9c-9.3 9.4-24.5 9.5-33.9 .2s-9.5-24.5-.2-33.9L438.6 325.9c33.9-34.3 33.9-89.4 0-123.7L310.9 72.9c-9.3-9.4-9.2-24.6 .2-33.9s24.6-9.2 33.9 .2zM0 229.5V80C0 53.5 21.5 32 48 32H197.5c17 0 33.3 6.7 45.3 18.7l168 168c25 25 25 65.5 0 90.5L277.3 442.7c-25 25-65.5 25-90.5 0l-168-168C6.7 262.7 0 246.5 0 229.5zM144 144a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg> 
                         <span className="ms-2">Vitrine </span>
                       </Link>
-                      <Link to={"/profile"} className="dropdown-item ai-icon">
+                      <a href="/profile" className="dropdown-item ai-icon">
                         <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" className="text-primary" width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx={12} cy={7} r={4} /></svg>
                         <span className="ms-2">Profile ( { stateUserByEmail  } )</span>
-                      </Link>
+                      </a>
                       
-                      <Link to={"/"} className="dropdown-item ai-icon">
+                      <a href="/" className="dropdown-item ai-icon">
                         <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" className="text-danger" width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1={21} y1={12} x2={9} y2={12} /></svg>
                         <span className="ms-2" onClick={ deconnexion }>Deconnexion </span>
-                      </Link>
+                      </a>
                     </div>
                   </li>
                 </ul>

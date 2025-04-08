@@ -40,27 +40,27 @@ function SideNav() {
                 <span className="nav-text">Types</span>
               </a>
               <ul aria-expanded="false">
-                  <li><a href="/listType">Gestion des types</a></li>
+                  <li><a href="/types">Géstion des types</a></li>
               </ul>
             </li>
             <li><a className="has-arrow " aria-expanded="false">
                 <i className="fa fa-bars" />
-                <span className="nav-text">Parametrages</span>
+                <span className="nav-text">Paramètres</span>
               </a>
               <ul aria-expanded="false">
                   { stateT.map(type => 
-                      <li key={type.typeId} >
-                        <a  href={`/listParametreByType/${type.typeId}`} >{type.name}</a>  
+                      <li key={type.id} >
+                        <a  href={`/listParametreByType/${type.id}`} >{type.nom}</a>  
                       </li>
                   )}
               </ul>
             </li>
             <li><a className="has-arrow " aria-expanded="false">
                 <i className="fas fa-heart" />
-                <span className="nav-text">Fonctionnalité</span>
+                <span className="nav-text">Sous Paramètre</span>
               </a>
               <ul aria-expanded="false">
-                 <li><a href="/listFonctionnalite">Gestion des fonctionnalités</a></li>
+                 <li><a href="/sousParametres">Géstion des sous paramètres</a></li>
                 {/* <li><a href="uc-select2.html">Select 2</a></li>
                 <li><a href="uc-nestable.html">Nestedable</a></li>
                 <li><a href="uc-noui-slider.html">Noui Slider</a></li>
@@ -70,23 +70,7 @@ function SideNav() {
                 <li><a href="uc-lightgallery.html">Light Gallery</a></li> */}
               </ul>
             </li>
-            {/* <li><a href="widget-basic.html" className aria-expanded="false">
-                <i className="fas fa-clone" />
-                <span className="nav-text">Widget</span>
-              </a>
-            </li> */}
-            {/* <li><a className="has-arrow " href="javascript:void()" aria-expanded="false">
-                <i className="fas fa-file-alt" />
-                <span className="nav-text">Rapport</span>
-              </a>
-              <ul aria-expanded="false">
-                <li><a href="form-element.html">Form Elements</a></li>
-                <li><a href="form-wizard.html">Wizard</a></li>
-                <li><a href="form-ckeditor.html">CkEditor</a></li>
-                <li><a href="form-pickers.html">Pickers</a></li>
-                <li><a href="form-validation.html">Form Validate</a></li>
-              </ul>
-            </li>
+{/*            
             <li><a className="has-arrow " href="javascript:void()" aria-expanded="false">
                 <i className="fas fa-table" />
                 <span className="nav-text">Catalogue Total</span>
@@ -96,17 +80,9 @@ function SideNav() {
                 <li><a href="table-datatable-basic.html">Datatable</a></li>
               </ul>
             </li> */}
-            <li><a className="has-arrow " aria-expanded="false">
-                <i className="fas fa-user" />
-                <span className="nav-text">Roles</span>
-              </a>
-              <ul aria-expanded="false">
-                <li><Link to={"/listRole"}>Gestion des roles</Link></li>
-              </ul>
-            </li>
-            <li><a className="has-arrow " aria-expanded="false">
+             <li><a className="has-arrow " aria-expanded="false">
                 <i className="fas fa-user-check" />
-                <span className="nav-text">Mon Compte</span>
+                <span className="nav-text">Utilisateurs</span>
               </a>
               <ul aria-expanded="false">
   
@@ -119,11 +95,51 @@ function SideNav() {
                     <li><a href="page-error-503.html">Error 503</a></li>
                   </ul>
                 </li> */}
-                <li><Link to={"/listUser"}>Personnels</Link></li>
+                <li><a href={"/utilisateurs"}>Utilisateur</a></li>
+              </ul>
+            </li>
+             <li><a className="has-arrow " aria-expanded="false">
+                <i className="fas fa-user" />
+                <span className="nav-text">Accès backend</span>
+              </a>
+              <ul aria-expanded="false">
+                <li><a href={"/accesBackends"}>Géstion des Accès backends</a></li>
+              </ul>
+            </li>
+            <li><a className="has-arrow " aria-expanded="false">
+                <i className="fas fa-user" />
+                <span className="nav-text">Accès entreprise</span>
+              </a>
+              <ul aria-expanded="false">
+                <li><a href={"/accesEntreprises"}>Géstion des Accès entreprises</a></li>
+              </ul>
+            </li>
+            <li><a className="has-arrow " aria-expanded="false">
+                <i className="fas fa-clone" />
+                <span className="nav-text">Roles</span>
+              </a>
+              <ul aria-expanded="false">
+                <li><a href={"/roles"}>Géstion des roles</a></li>
+              </ul>
+            </li>
+            <li><a className="has-arrow " aria-expanded="false">
+                <i className="fas fa-table" />
+                <span className="nav-text">Fonctionnalités</span>
+              </a>
+              <ul aria-expanded="false">
+                <li><a href={"/fonctionnalites"}>Géstion des fonctionnalités</a></li>
+              </ul>
+            </li>
+            <li><a className="has-arrow " aria-expanded="false">
+                <i className="fas fa-file-alt" />
+                <span className="nav-text">Entreprises</span>
+              </a>
+              <ul aria-expanded="false">
+                <li><a href={"/entreprises"}>Géstion des entreprises</a></li>
               </ul>
             </li>
           </ul>
-          <div className="side-bar-profile">
+          {/* <div className="side-bar-profile">
             <div className="d-flex align-items-center justify-content-between mb-3">
               <div className="side-bar-profile-img">
                 <img src="images/user.jpg" alt="img" />
@@ -145,10 +161,10 @@ function SideNav() {
                 <span className="sr-only">45% Complete</span>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="copyright">
-            <p><strong>JCaisse 2 Admin</strong> © 2023 Tous droits réservés</p>
-            <p className="fs-12">Réalisé avec <span className="heart" /> par YAATOUT SARL</p>
+            <p><strong>JCaisse 2 Admin</strong> © 2025 Tous droits réservés</p>
+            <p className="fs-12">Réalisé par YAATOUT SARL</p>
           </div>
         </div>
       </div>

@@ -1,0 +1,109 @@
+// import React, { useState, useEffect, useContext } from 'react';
+// import Modal from 'react-bootstrap/Modal';
+// import { getAllEntreprises, getEntrepriseById, updateEntreprise} from '../../../servicesApi/microservice-utilisateur';
+// import { AppContextIdUserByToken, AppContextEntreprise } from '../../../useContext/contextStateUser';
+// import { Link } from 'react-router-dom';
+// import { ValidationName } from '../../../validateur/validation';
+
+// function EditerEntreprise({entrepriseId}) {
+//       //const navigate = useNavigate();
+//       const [show, setShow] = useState(false);
+//       const handleClose = () => setShow(false);
+//       const handleShow = () => setShow(true);
+//       //recupere la liste des entreprises
+//       const { stateEntreprise, setStateEntreprise  } = useContext(AppContextEntreprise);
+//       //permet de requiperer l'identifiant de l'utilisateur ensuite de l'utiliser dans le methode d'ajoute
+//       const {stateIdUserFromToken, setStateIdUserFromToken} = useContext(AppContextIdUserByToken);
+      
+
+//       const [nom, setNom] = useState("");
+//       const [description, setDescription] = useState("");
+//       //ajouter l'identifiant de l'utilisateur dans le entreprise qu'il modifi
+//       //const idUser = stateIdUserFromToken;
+//       //const [userId, setUserId] = useState(idUser);
+//       const [errorNom, setErrorNom] = useState("");
+
+
+//       useEffect(() =>{
+//         if (id) {
+//            handleGetEntrepriseById(entrepriseId);
+//         }
+//       },[id]);
+
+//       const handleGetEntrepriseById = (entrepriseId) => {
+//             getEntrepriseById(entrepriseId).then(resp => {
+//                  let entreprise = resp.data;
+//                  setNom(entreprise.nom);
+//                  setDescription(entreprise.description);
+                 
+//             });
+//       };
+
+//       const handleUpdateEntreprise = (e) => {
+//           e.preventDefault();
+//           const errorNom = ValidationName(nom);
+//           const id = entrepriseId;
+//           const userId = stateIdUserFromToken;
+//           let entreprise = {id, nom, description, userId};
+//           if(!errorNom){
+//             updateEntreprise(entreprise).then(resp =>{
+//                   {handleClose();}
+//                   getAllEntreprises()
+//                       .then( resp => {
+//                           setStateEntreprise(resp.data);
+//                   }) 
+//                   alert("Entreprise modifier avec success")
+                  
+//                 } )
+//                 .catch(err => {
+//                   console.log(err)
+//               });
+//           }else{
+//             setErrorNom(errorNom);
+//           }      
+//       };
+//       return(
+//             <>
+
+//              <Link onClick={handleShow} className="dropdown-item" >Modifier</Link>
+
+//              <Modal show={show} onHide={handleClose}>
+//                 <Modal.Header closeButton>
+//                   <Modal.Title>Modification d'une entreprise</Modal.Title>
+//                 </Modal.Header>
+//                 <Modal.Body>
+//                     <form onSubmit={ handleUpdateEntreprise }>
+//                       <div className="row"> 
+//                           <div className="col-lg-12">
+//                           <div className="mb-3">
+//                               <label className="form-label">Nom<span style={{color: "red"}}>*</span> :
+//                               {errorNom && <span style={ { color: "red"} } >{errorNom}</span>}
+//                               </label>
+//                               <input name="nom" type="text" value={nom}
+//                                 onChange={(e) => setNom(e.target.value) } className="form-control" />
+//                           </div>
+//                           </div>
+//                           <div className="col-lg-12">
+//                           <div className="mb-3">
+//                               <label className="form-label">Description : </label>
+//                               <input name="description" type="tel" value={description}
+//                                   onChange={(e) => setDescription(e.target.value) } className="form-control" />
+//                           </div>
+//                           </div>
+                         
+//                         <div className="modal-footer">
+                            
+//                             <button type="button" className="btn btn-danger light" onClick={handleClose}>Fermer</button>
+//                             <button className="btn btn-primary">+ Modifiier</button>
+                            
+//                         </div>
+//                       </div>
+//                     </form>
+//                 </Modal.Body>
+//                 <Modal.Footer>
+//                 </Modal.Footer>
+//             </Modal>
+//            </>
+//         );
+// }
+// export default EditerEntreprise;

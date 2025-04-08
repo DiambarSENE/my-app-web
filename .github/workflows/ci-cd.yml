@@ -102,7 +102,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            docker pull diambarsene/jcaisse-frontend-app-react:latest .
+            docker pull diambarsene/jcaisse-frontend-app-react:latest
             cd /docker-compose-files
             docker-compose -f docker-compose-frontend.yml up -d
 

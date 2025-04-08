@@ -2,7 +2,7 @@ import { createContext, useState  } from 'react';
 export const AppContext = createContext();
 export const AppContextParam = createContext();
 export const AppContextParamByType = createContext();
-export const AppContextFonctionnalite = createContext();
+export const AppContextSousParametre = createContext();
 
 export const useAppState = () => {
     //const initialiser = [];
@@ -21,7 +21,7 @@ export const useAppStateParamByType = () => {
     return appState;
 };
 
-export const useAppStateFonctionnalite = () => {
+export const useAppStateSousParametre = () => {
     const appState = useState([]);
     return appState;
 }

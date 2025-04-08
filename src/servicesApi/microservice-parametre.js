@@ -6,8 +6,8 @@ export const getAuthToken = () => {
 };
 
 export const parametresApi = axios.create({
-    //baseURL: "http://localhost:8084",
-    baseURL: "http://31.220.20.148:9999/YAATOUT-PARAMETTRES-API",
+    baseURL: "http://localhost:8084",
+    //baseURL: "http://31.220.20.148:9999/YAATOUT-PARAMETTRES-API",
     // headers: {
     //     'Authorization': `Bearer ${getAuthToken()}`,
     //     'Content-Type': 'application/json',
@@ -36,85 +36,96 @@ export const parametresApi = axios.create({
 // ==============================
 
 export const getTypes= () => {
-    return parametresApi.get(`/types/getAll`);
+    return parametresApi.get(`/types`);
 };
 
 export const createType = (type) => {
-    return parametresApi.post("/types/ajouter", type );
+    return parametresApi.post("/type", type );
 };
 
 export const deleteType = (id) => {
-    return parametresApi.delete("/types/delete/"+id);
+    return parametresApi.delete("/type/"+id+"/id");
 };
 
 export const updateType = (type) => {
-    return parametresApi.put("/types/update", type);
+    return parametresApi.put("/type", type);
 };
 export const updatePropertyActivated = (type) => {
-    return parametresApi.patch("/types/updatePropriteActivated", type);
+    return parametresApi.patch("/type", type);
 };
 export const getTypeById = (idType) => {
-    return parametresApi.get(`/types/${idType}`);
+    return parametresApi.get(`/type/${idType}/id`);
 };
-export const getTypeByName = (id) => {
-    return parametresApi.get(`/types/name/${id}`);
+export const getTypeByName = (nom) => {
+    return parametresApi.get(`/type/${nom}/nom`);
 };
 
 //==================       Parametre           ====================================================
 
-// export const getParametres=()=> {
-//     return parametresApi.get(`/parametres/getAll`);
+export const getParametres=()=> {
+    return parametresApi.get("/parametres");
+};
+// export const getParametres=(page,size,keyword)=> {
+//    return parametresApi.get(`/parametres/getAllParametres?page=${page}&size=${size}`);
 // };
-//export const getParametres=(page,size,keyword)=> {
-  //  return parametresApi.get(`/parametres/getAllParametres?page=${page}&size=${size}`);
-//};
 export const createParametre = (parametre) => {
-    return parametresApi.post("/parametres/ajouter", parametre );
+    return parametresApi.post("/parametre", parametre );
 };
 
-export const deleteParametre = (id) => {
-    return parametresApi.delete("/parametres/delete/"+id);
+export const deleteParametreById = (id) => {
+    return parametresApi.delete("/parametre/"+id+"/id");
+};
+
+export const deleteParametreByNom = (nom) => {
+    return parametresApi.delete("/parametre/"+nom+"/nom");
 };
 
 export const updateParametre = (parametre) => {
-    return parametresApi.put("/parametres/update", parametre);
+    return parametresApi.put("/parametre", parametre);
 };
 export const updatePropertyiSActivated = (parametre) => {
-    return parametresApi.patch("/parametres/updatePropriteActivated", parametre);
+    return parametresApi.patch("/parametre", parametre);
 };
 export const getParametreById = (idParametre) => {
-    return parametresApi.get(`/parametres/${idParametre}`);
+    return parametresApi.get(`/parametre/${idParametre}/id`);
 };
 export const getParametreByName = (name) => {
-    return parametresApi.get(`/parametres/name/${name}`);
+    return parametresApi.get(`/parametre/${name}/nom`);
 };
 export const getParametreByIdType = (idType) => {
-    return parametresApi.get(`/parametres/parametreByType/${idType}`);
+    return parametresApi.get(`/parametres/${idType}`);
 };
 
-//==================       Fonctionnalite           ====================================================
+//==================       SousParametre           ====================================================
 
-export const getAllFonctionnalites = () => {
-    return parametresApi.get(`/fonctionnalite/getAllFonctionnalite`);
-};
-
-export const createFonctionnalite = (fonctionnalite) => {
-    return parametresApi.post("/fonctionnalite/add", fonctionnalite );
+export const getAllSousParametres = () => {
+    return parametresApi.get(`/sousParametres`);
 };
 
-export const deleteFonctionnalite = (id) => {
-    return parametresApi.delete("/fonctionnalite/delete/"+id);
+export const createSousParametre = (sousParametre) => {
+    return parametresApi.post("/sousParametre", sousParametre );
 };
 
-export const updateFonctionnalite = (fonctionnalite) => {
-    return parametresApi.put("/fonctionnalite/update", fonctionnalite);
+export const deleteSousParametre = (id) => {
+    return parametresApi.delete(`/sousParametre/${id}/id`);
 };
-export const updatePropertyActiver = (fonctionnalite) => {
-    return parametresApi.patch("/fonctionnalite/updatePropriteActiver", fonctionnalite);
+
+export const deleteSousParametreByNom = (nom) => {
+    return parametresApi.delete(`/sousParametre/${nom}/nom`);
 };
-export const getFonctionnaliteById = (idFonctionnalite) => {
-    return parametresApi.get(`/fonctionnalite/${idFonctionnalite}`);
+
+export const updateSousParametre = (sousParametre) => {
+    return parametresApi.put("/sousParametre", sousParametre);
 };
-export const activerDesactiver = (fonctionnalite) => {
-    return parametresApi.patch("/fonctionnalite/activerDesactiver", fonctionnalite);
+// export const updatePropertyActiver = (sousParametre) => {
+//     return parametresApi.patch("/sousParametre/updatePropriteActiver", sousParametre);
+// };
+export const getSousParametreById = (id) => {
+    return parametresApi.get(`/sousParametre/${id}/id`);
+};
+export const getSousParametreByNom = (nom) => {
+    return parametresApi.get(`/sousParametre/${nom}/nom`);
+};
+export const activerDesactiver = (sousParametre) => {
+    return parametresApi.patch("/sousParametre", sousParametre);
 };
